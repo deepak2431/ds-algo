@@ -85,3 +85,7 @@ int main() {
     
     return 0;
 }
+
+/* An alternative solution would be to count the
+ indegree of all the vertices of a graph. 
+ All the vertex with zero in degree would be the mother vertex. */

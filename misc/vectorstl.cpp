@@ -16,6 +16,7 @@ int main() {
     perm.push_back("ghj");
 
     insertElem(perm);
+    perm.pop_back();
 
     for(int i = 0; i < perm.size(); i++)
         cout << perm[i] << endl;
