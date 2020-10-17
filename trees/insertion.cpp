@@ -52,6 +52,35 @@ Node *insertNode(Node *root, int data) {
     }
 }
 
+bool checkSum(Node *root) {
+
+    bool ans = true;
+    queue<struct Node*> q;
+    q.push(root);
+
+    while(!q.empty()) {
+
+        Node *temp = q.front();
+        q.pop();
+        int sum = 0;
+        if(temp->left) {
+            sum = sum + temp->left->data;
+            q.push(temp->left);
+        }
+        if(temp->right) {
+            sum = sum + temp->right->data;
+            q.push(temp->right);
+        }
+        if(temp->data != sum && temp->left!=NULL && temp->right!=NULL) {
+            cout << sum << " " << temp->data << endl;
+            ans = false;
+            break;
+        }
+    }
+
+    return ans;
+}
+
 void inorder(Node* temp) {
 
     if (temp == NULL)
@@ -64,23 +93,31 @@ void inorder(Node* temp) {
  
 int main() {
 
-    Node* root = createNode(10);
-    root->left = createNode(11);
-    root->left->left = createNode(7);
-    root->right = createNode(9);
-    root->right->left = createNode(15);
-    root->right->right = createNode(8);
+    Node *root = createNode(10); 
+    root->left     = createNode(8); 
+    root->right = createNode(2); 
+    root->left->left = createNode(3); 
+    root->left->right = createNode(5); 
+    root->right->right = createNode(2); 
  
     cout << "Inorder traversal before insertion: ";
     inorder(root);
     cout << endl;
  
     int key = 12;
-    root = insertNode(root, key);
+    //root = insertNode(root, key);
  
     cout << "Inorder traversal after insertion: ";
     inorder(root);
     cout << endl;
+
+    if(checkSum(root))
+        cout << "Sum property exists" << endl;
+    else
+    {
+        cout << "Sum propert doesn't exists " << endl;
+    }
+    
  
     return 0;
 }
