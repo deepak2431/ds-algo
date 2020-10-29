@@ -32,8 +32,8 @@ int findLcs(string s1, string s2, int n, int m) {
 
 int main() {
 
-    string s1 = "AGGTAB";
-    string s2 = "GXTXAYB";  
+    string s1 = "cbbd";
+    string s2 = "dbbc";  
 
     cout << findLcs(s1, s2, s1.size(), s2.size()) << endl;
 
